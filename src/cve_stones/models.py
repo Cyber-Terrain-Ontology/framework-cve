@@ -219,5 +219,5 @@ class CveRecord(BaseModel):
     notes:         list[LocalizedText] = Field(default_factory=list)
 
     # --- Provenance ----------------------------------------------------------
-    source_schema: Literal["v2", "v5"] = Field(description="Which schema family the record was ingested from")
+    source_schema: Literal["v2", "v5", "v2+v5"] = Field(description="Which schema family the record was ingested from")
     raw:           dict[str, Any]      = Field(default_factory=dict, description="Original raw record for round-trip fidelity")
