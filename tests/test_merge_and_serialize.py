@@ -317,7 +317,7 @@ class TestToTurtle:
 
     def test_ontology_import(self, turtle):
         assert "owl:imports" in turtle
-        assert "ontology.cve.org" in turtle
+        assert "cyberterrain.org/ns/frameworks/cve" in turtle
 
     def test_descriptions_section(self, turtle):
         assert "cve:LocalizedText" in turtle

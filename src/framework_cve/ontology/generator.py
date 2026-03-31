@@ -18,7 +18,7 @@ Usage
 -----
     from framework_cve.ontology.generator import generate
     print(generate())                   # returns Turtle string
-    generate(path="cve_ontology.ttl")   # writes to file
+    generate(path="ontologies/cve.ttl")  # writes to file
 """
 
 from __future__ import annotations
@@ -53,8 +53,8 @@ from ..models import (
 # Namespace
 # ---------------------------------------------------------------------------
 
-BASE_IRI = "https://ontology.cve.org/2025/cve#"
-ONTOLOGY_IRI = "https://ontology.cve.org/2025/cve"
+BASE_IRI = "https://cyberterrain.org/ns/frameworks/cve#"
+ONTOLOGY_IRI = "https://cyberterrain.org/ns/frameworks/cve"
 
 # All model classes in dependency order (leaves first)
 MODEL_CLASSES: list[type[BaseModel]] = [
@@ -183,7 +183,7 @@ def _gen_prefixes() -> str:
         @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
         @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
         @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
-        @prefix cve:  <https://ontology.cve.org/2025/cve#> .
+        @prefix cve:  <https://cyberterrain.org/ns/frameworks/cve#> .
     """)
 
 
@@ -423,6 +423,6 @@ def generate(path: str | Path | None = None) -> str:
 
 if __name__ == "__main__":
     import sys
-    out_path = sys.argv[1] if len(sys.argv) > 1 else "cve_ontology.ttl"
+    out_path = sys.argv[1] if len(sys.argv) > 1 else "ontologies/cve.ttl"
     generate(path=out_path)
     print(f"Written: {out_path}")

@@ -45,11 +45,11 @@ from ..models import (
 # ---------------------------------------------------------------------------
 
 CVE_RECORD_BASE  = "https://cve.org/CVERecord/"
-ONTOLOGY_IRI     = "https://ontology.cve.org/2025/cve"
-CVE_NS           = "https://ontology.cve.org/2025/cve#"
+ONTOLOGY_IRI     = "https://cyberterrain.org/ns/frameworks/cve"
+CVE_NS           = "https://cyberterrain.org/ns/frameworks/cve#"
 
 PREFIXES = """\
-@prefix cve:  <https://ontology.cve.org/2025/cve#> .
+@prefix cve:  <https://cyberterrain.org/ns/frameworks/cve#> .
 @prefix cveid: <https://cve.org/CVERecord/> .
 @prefix owl:  <http://www.w3.org/2002/07/owl#> .
 @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
