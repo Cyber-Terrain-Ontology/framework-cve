@@ -1,4 +1,4 @@
-# cve-stones
+# framework-cve
 
 A unified CVE ontology and ingestion library that supports both the legacy
 **CVE JSON 2.x** (DWF) format and the current **CVE JSON 5.x** (CNA) format.
@@ -12,7 +12,7 @@ representations stay in sync automatically.
 ## Contents
 
 ```
-cve-stones/
+framework-cve/
 ├── schema/
 │   ├── CVE_JSON_2.0_spec.md              # CVE JSON 2.x specification (archived)
 │   ├── CVE_JSON_5.0_schema.json          # CVE JSON 5.0 JSON Schema (draft-07)
