@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "cve-stones"
+name = "framework-cve"
 version = "0.1.0"
 description = "Unified CVE ontology supporting JSON 2.x and 5.x ingestion"
 requires-python = ">=3.11"
@@ -18,4 +18,4 @@ dev = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/cve_stones"]
+packages = ["src/framework_cve"]

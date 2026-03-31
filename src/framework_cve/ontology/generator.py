@@ -16,7 +16,7 @@ non-Optional scalar             → minCardinality 1  (if not defaulted)
 
 Usage
 -----
-    from cve_stones.ontology.generator import generate
+    from framework_cve.ontology.generator import generate
     print(generate())                   # returns Turtle string
     generate(path="cve_ontology.ttl")   # writes to file
 """
@@ -380,7 +380,7 @@ def generate(path: str | Path | None = None) -> str:
     sections: list[str] = [
         "# ============================================================",
         "# CVE Unified Ontology",
-        "# Auto-generated from cve_stones.models (Pydantic → OWL)",
+        "# Auto-generated from framework_cve.models (Pydantic → OWL)",
         "# ============================================================",
         "",
         _gen_prefixes(),

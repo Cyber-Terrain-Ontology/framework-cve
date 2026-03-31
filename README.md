@@ -19,7 +19,7 @@ framework-cve/
 │   ├── CVE_Record_Format_5.x_current.json  # CVE JSON 5.2 JSON Schema (current)
 │   └── cve_ontology.ttl                  # Generated OWL ontology (Turtle)
 │
-├── src/cve_stones/
+├── src/framework_cve/
 │   ├── models.py                         # Unified Pydantic model (the ontology source)
 │   ├── ingest/
 │   │   ├── __init__.py                   # Auto-detect schema version and dispatch
@@ -67,7 +67,7 @@ pip install -e ".[dev]"       # library + pytest
 
 ```python
 import json
-from cve_stones import ingest
+from framework_cve import ingest
 
 # Works with either schema — version is detected automatically
 with open("CVE-2021-44228.json") as f:
@@ -90,7 +90,7 @@ for product in record.affected:
 
 ## Unified model
 
-`src/cve_stones/models.py` is the single source of truth.  All consumers work
+`src/framework_cve/models.py` is the single source of truth.  All consumers work
 against `CveRecord` regardless of which schema the record originated from.
 
 ### Key classes
@@ -162,16 +162,16 @@ contributing classes simultaneously.
 
 ### Regenerating the ontology
 
-After any change to `src/cve_stones/models.py`, regenerate the Turtle file:
+After any change to `src/framework_cve/models.py`, regenerate the Turtle file:
 
 ```bash
-python -m cve_stones.ontology.generator schema/cve_ontology.ttl
+python -m framework_cve.ontology.generator schema/cve_ontology.ttl
 ```
 
 Or from Python:
 
 ```python
-from cve_stones.ontology.generator import generate
+from framework_cve.ontology.generator import generate
 generate(path="schema/cve_ontology.ttl")
 ```
 
@@ -185,13 +185,13 @@ print(turtle)
 
 ### Extending the model
 
-1. Edit `src/cve_stones/models.py` — add fields, classes, or enum members.
-2. Update the relevant ingest mapper in `src/cve_stones/ingest/v2.py` or `v5.py`
+1. Edit `src/framework_cve/models.py` — add fields, classes, or enum members.
+2. Update the relevant ingest mapper in `src/framework_cve/ingest/v2.py` or `v5.py`
    to populate the new fields from source records.
 3. Add test coverage in `tests/test_ingest.py`.
 4. Regenerate the ontology:
    ```bash
-   python -m cve_stones.ontology.generator schema/cve_ontology.ttl
+   python -m framework_cve.ontology.generator schema/cve_ontology.ttl
    ```
 
 The ontology is always a downstream artefact of the model — edit the model,
@@ -204,7 +204,7 @@ never the `.ttl` file directly.
 ```bash
 pytest
 pytest -v          # verbose, shows each test name
-pytest --cov=cve_stones --cov-report=term-missing
+pytest --cov=framework_cve --cov-report=term-missing
 ```
 
 The test suite covers:

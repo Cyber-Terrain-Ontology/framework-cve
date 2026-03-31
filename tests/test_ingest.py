@@ -7,8 +7,8 @@ ingests it, and asserts that the unified CveRecord fields are correct.
 
 import pytest
 
-from cve_stones import ingest
-from cve_stones.models import CveRecord, CveState, CvssVersion
+from framework_cve import ingest
+from framework_cve.models import CveRecord, CveState, CvssVersion
 
 
 # ---------------------------------------------------------------------------
@@ -135,19 +135,19 @@ V5_MINIMAL = {
 
 class TestDetectVersion:
     def test_detects_v2_by_data_version(self):
-        from cve_stones.ingest import detect_version
+        from framework_cve.ingest import detect_version
         assert detect_version({"DATA_VERSION": "2.4", "CVE_ID": "CVE-2000-0001"}) == "v2"
 
     def test_detects_v2_by_keys(self):
-        from cve_stones.ingest import detect_version
+        from framework_cve.ingest import detect_version
         assert detect_version({"DWF": {}, "CVE_ID": "CVE-2000-0001"}) == "v2"
 
     def test_detects_v5_by_data_type(self):
-        from cve_stones.ingest import detect_version
+        from framework_cve.ingest import detect_version
         assert detect_version({"dataType": "CVE_RECORD", "dataVersion": "5.0"}) == "v5"
 
     def test_detects_v5_by_metadata_key(self):
-        from cve_stones.ingest import detect_version
+        from framework_cve.ingest import detect_version
         assert detect_version({"cveMetadata": {}, "containers": {}}) == "v5"
 
 

@@ -248,8 +248,8 @@ def to_turtle(record: CveRecord, path: str | Path | None = None) -> str:
     Parameters
     ----------
     record:
-        The unified record to serialise (from :func:`~cve_stones.ingest.ingest`
-        or :func:`~cve_stones.ingest.merge.merge`).
+        The unified record to serialise (from :func:`~framework_cve.ingest.ingest`
+        or :func:`~framework_cve.ingest.merge.merge`).
     path:
         Optional file path to write the Turtle to.
 

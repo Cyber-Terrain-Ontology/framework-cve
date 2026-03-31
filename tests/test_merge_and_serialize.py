@@ -11,8 +11,8 @@ The v5 record is authoritative for title, v3.1 CVSS, purl, and descriptions.
 
 import pytest
 
-from cve_stones import ingest, merge, to_turtle
-from cve_stones.models import CveState, CvssVersion
+from framework_cve import ingest, merge, to_turtle
+from framework_cve.models import CveState, CvssVersion
 
 # ---------------------------------------------------------------------------
 # Shared fixtures
@@ -278,7 +278,7 @@ class TestMerge:
         assert "v5" in merged.raw
 
     def test_merge_wrong_cve_raises(self, r_v2):
-        from cve_stones.models import CveRecord, CveState
+        from framework_cve.models import CveRecord, CveState
         other = r_v2.model_copy(update={"cve_id": "CVE-1999-0001"})
         with pytest.raises(ValueError, match="Cannot merge"):
             merge(r_v2, other)

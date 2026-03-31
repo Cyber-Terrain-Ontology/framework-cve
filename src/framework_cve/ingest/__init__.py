@@ -5,7 +5,7 @@ appropriate mapper.
 Usage::
 
     import json
-    from cve_stones import ingest
+    from framework_cve import ingest
 
     with open("CVE-2021-44228.json") as f:
         record = ingest(json.load(f))
